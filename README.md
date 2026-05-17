@@ -1,0 +1,1 @@
+“This is not just one project — I’m going to bring more projects as well. Computer is my favorite subject, and I always write logic by hand myself. In this project, I used `forEach` to fetch data from an array and display it on the frontend. I stored the score and index in the array and showed pass/fail results. I really enjoyed making this mini project.”
