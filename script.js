@@ -1,106 +1,65 @@
 
-let startScreen = document.querySelector('.start-screen')
-let quizScreen = document.querySelector('.quiz-screen')
-let resultScreen = document.querySelector('.result-screen')
-let startBtn = document.getElementById('start-btn')
-let resTartBtn = document.getElementById('reset-btn')
-let score = document.getElementById('score')
-let totalScore = document.getElementById('total-score')
-let currentQ = document.querySelector('#current-q')
-let nextBtn = document.querySelector('#next-btn')
-let yourScore = document.getElementById('score')
-let optionBox = document.querySelector('.option-box')
-let passed = document.getElementById('passed');
 
+function generatePassword() {
 
-const quizes = [
-    {
-        question: "What is out put in python",
-        options: ["console.log", "print", "system.consle.log"],
-        correct: "print"
-    },
-    {
-        question: "Where is python run time",
-        options: ["node js", "python installer", "terminal"],
-        correct: "terminal"
-    },
-    {
-        question: "is typescript globaly installation ?",
-        options: ["yes globaly installation typescrpit", "no install globally", "i dont know"],
-        correct: "yes globaly installation typescrpit"
-    }
-]
+    //chars rakho pihly
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$";
+    //sarai boxes selcet karo
+    let boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        //random charsnikalo 
+        let randomChars = chars[Math.floor(Math.random() * chars.length)];
 
-let index = 0
-let correct = 0
-let incorrect = 0
-let selected = false
-let Score
-function showQuiz() {
-    startScreen.classList.add('screen');
-    quizScreen.classList.remove('screen')
-    let q = quizes[index]
+        //ab box mai show karna k lia yea karein
+        box.innerText = randomChars
 
-    optionBox.innerHTML = "";
-    currentQ.innerText = q.question
-    q.options.forEach(option => {
-        selected = false
-        let li = document.createElement('li')
-        li.innerText = option
-        optionBox.append(li)
-        li.addEventListener('click', function () {
-            if (selected) return
-            selected = true
-            if (option === q.correct) {
-                correct++;
-                Score++;
-                li.style.background = "lightgreen"
-            } else {
-                incorrect++;
-                Score++;
-                li.style.background = "tomato"
-            }
-        })
+        //kia matlab class remove karo
+        box.classList.remove('correct', 'wrong')
+    })
 
-        score.innerText = q.options.length
-    });
-}
-
-function start() {
-    startScreen.style.display = "none"
-    quizScreen.style.display = "block"
-    resultScreen.style.display = "none"
-    showQuiz()
-}
-function next() {
-    console.log("next called")
-    index++;
-    if (index < quizes.length) {
-        showQuiz()
+    if (
+        randomChars.math(/[A-Z]/) ||
+        randomChars.math(/[a-z]/) ||
+        randomChars.math(/[@#$]/)
+    ) {
+        box.classList.add('correct')
     } else {
-        showResult()
+        box.classList.remove('wrong')
     }
 }
 
 
-function showResult() {
-    startScreen.style.display = "none"
-    quizScreen.style.display = "none"
-    resultScreen.style.display = "block"
+// function generatePassword() {
 
-    if (correct > incorrect) {
-        passed.innerText = "passed"
-    } else {
-        passed.innerText = "failed"
-    }
-    if (correct > incorrect) {
-        passed.innerText = "passed"
-    } else {
-        passed.innerText = "failed"
-    }
-    totalScore.innerText = index
-    document.getElementById('score-y').innerText = correct
-}
+//     // Password characters
+//     let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$";
 
+//     // Sare boxes select karo
+//     let boxes = document.querySelectorAll(".box");
 
-//next btn pr 
+//     boxes.forEach(box => {
+
+//         // Random character nikalo
+//         let randomChar = chars[Math.floor(Math.random() * chars.length)];
+
+//         // Box me show karo
+//         box.innerText = randomChar;
+
+//         // Pehle classes remove karo
+//         box.classList.remove("correct", "wrong");
+
+//         // Strong check
+//         if (
+//             randomChar.match(/[A-Z]/) ||
+//             randomChar.match(/[0-9]/) ||
+//             randomChar.match(/[@#$]/)
+//         ) {
+//             box.classList.add("correct");
+//         }
+//         else {
+//             box.classList.add("wrong");
+//         }
+
+//     });
+
+// }
